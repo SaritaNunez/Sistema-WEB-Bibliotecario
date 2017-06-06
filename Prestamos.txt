@@ -1,0 +1,138 @@
+<html>
+<head>
+<link rel='stylesheet' type='text/css' href='container.css' media='all'>
+<link rel='stylesheet' type='text/css' href='estiloM.css' media='all'>
+</head>
+<body>
+<div class="clip-text clip-text_fifteen clip-text--no-textzone">TECbook</div>
+<br>
+      <nav>
+		<div align="center" color="#1C5999">
+            <ul class="fancyNav">
+                <li id="home"><a href="Usuarios.php">Prestamos</a></li>
+                <li id="news"><a href="Usuarios.php">Usuarios</a></li>
+				<li id="news"><a href="Libros.php">Libros</a></li>
+                <li id="services"><a href="#Status">Status</a></li>
+                <li id="contact"><a href="cerrar.php">Cerrar sesion</a></li>
+            </ul>
+			</div>
+        </nav>
+<br>
+</td>
+
+<div align="center">
+<label> Buscar por : </label>
+<select name="clave">
+<option value="ID-P">ID-P</option>
+<option value="Nombre">Nombre</option>
+<option value="Apellido Paterno">Apellido Paterno</option>
+<option value="Apellido Materno">Apellido Materno</option>
+<option value="Telefono">Telefono</option>
+<option value="Tipo">Tipo</option>
+</select>
+<input type="size" size="80" name="palabra">
+<input type="submit" value="Buscar" name="buscar" 
+	</div>
+<br>
+<div align="center">
+<br><br>
+<?php
+
+include("Conexion.php");
+
+$usuarios = mysql_query("select * from usuarios",$conexion) or
+                         die("Problemas en el select:".mysql_error());
+
+						 
+if ($reg=mysql_fetch_array($usuarios)){
+echo "<table width='100%' border='1' bgcolor='#1C5999'>";
+echo "<tr>";
+echo "<td align='center'>";
+echo "<b><font color='#FFFFFF'>ID</font></b>";
+echo "</td>";
+echo "<td align='center'>";
+echo "<b><font color='#FFFFFF'>Nombre</font></b>";
+echo "</td>";
+echo "<td align='center'>";
+echo "<b><font color='#FFFFFF'>Apellido Paterno</font></b>";
+echo "</td>";
+echo "<td align='center'>";
+echo "<b><font color='#FFFFFF'>Apellido Materno</font></b>";
+echo "</td>";
+echo "<td align='center'>";
+echo "<b><font color='#FFFFFF'>Telefono</font></b>";
+echo "</td>";
+echo "<td align='center'>";
+echo "<b><font color='#FFFFFF'>Tipo</font></b>";
+echo "</td>";
+echo "</tr>";
+
+$usuarios = mysql_query("select * from usuarios",$conexion) or
+                         die("Problemas en el select:".mysql_error());
+
+$color_tabla=1;
+while ($reg=mysql_fetch_array($usuarios))
+{
+if ($color_tabla==1){
+    echo "<tr bgcolor='#fffff'>";
+        echo "<td width=10%>";
+          echo $reg['ID'];
+        echo "</td>";
+
+		echo "<td width=10%>";
+          echo $reg['Nombre'];
+        echo "</td>";
+        echo "<td width=10%>";
+          echo $reg['Apellido Paterno'];
+        echo "</td>";
+        echo "<td width=10%>";
+          echo $reg['Apellido Materno'];
+        echo "</td>";
+        echo "<td width=10%>";
+          echo $reg['Telefono'];
+        echo "</td>"; 	
+        echo "<td width=10%>";
+          echo $reg['Tipo'];
+        echo "</td>";
+    echo "</tr>";
+	$color_tabla=2;
+}
+else  {
+    echo "<tr bgcolor='#fffff'>";
+        echo "<td width=10%>";
+          echo $reg['ID'];
+        echo "</td>";
+          echo "<td width=10%>";
+          echo $reg['Nombre'];
+        echo "</td>";
+        echo "<td width=10%>";
+          echo $reg['Apellido Paterno'];
+        echo "</td>";
+        echo "<td width=10%>";
+          echo $reg['Apellido Materno'];
+        echo "</td>";
+        echo "<td width=10%>";
+          echo $reg['Telefono'];
+        echo "</td>"; 	
+        echo "<td width=10%>";
+          echo $reg['Tipo'];
+        echo "</td>";
+	echo "</tr>";
+	$color_tabla=1;
+}  
+}
+echo "</table>";
+}
+else {
+echo "<div align=center>";
+echo "<font color=red size=18>No hay registros cargados. Presione en Agregar Contactos</font>";
+echo "</div>";
+}
+
+mysql_close($conexion);
+?>
+<br>
+  
+
+</body>
+</html>

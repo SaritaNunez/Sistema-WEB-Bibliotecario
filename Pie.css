@@ -1,0 +1,13 @@
+html, body {
+height: 100%; / * hacer que la página llene toda la altura * /
+}
+* {
+margin: 0;  / * márgenes podrían meter la pata * /
+}
+# contenidoprincipal  {
+height: 100%;  / * empuja el pie hacia abajo * /
+}
+# piedepagina {
+height: 50px;  / * establece la altura del pie de página * /
+margin-top: -50px;  / * estas cifras tienen que ser opostas * /
+}

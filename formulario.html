@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>Datos Personales</title>
+<link rel='stylesheet' type='text/css' href='container.css' media='all'>
+</head>
+<body>
+<?php
+$edad=1;
+if(!is_numeric($edad)){
+echo "En este campo solo se acepta numeros"
+}
+$nom="";
+if(!is_text($nom)){
+echo"Solamente letras"
+}
+?>
+
+<form action="Usuarios.php" method="post">
+<label>Nombre:</label>
+<input size="text" name="nombre" >
+<br><br>
+<label>Apellido Paterno:</label>
+<input size="text" name="ap">
+<br><br>
+<label>Apellido Materno:</label>
+<input size="text" name="am">
+<br><br>
+<label>Edad:</label>
+<input type="number" name="edad">
+<br><br>
+<label>Carrera:</label>
+<input size="text" name="carrera">
+<br><br>
+<label>Fecha de nacimiento:</label>
+   	<input type="date" name="fecha"> 
+  <br>
+<label>Sexo:</label><br>
+<input type="radio" name="RadioGroup1" value="Femenino1" id="s">
+      Femenino<br>
+<input type="radio" name="RadioGroup1" value="Masculino" id="s">
+      Masculino<br><br>
+
+	  
+<label>Comentarios:</label><br>
+<textarea name="com" cols="20" rows="5" id="com">
+</textarea><br><br>
+
+<input type="submit" value="Enviar informacion">
+<input type="reset" value="Borrar informacion">
+
+</form>
+</body>
+</html>
